@@ -1,0 +1,33 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-12">
+                <form action="{% url 'edit_categoria' categoria.id %}" method="post">{% csrf_token %}
+                    <div class="mainheading">
+                        <h3 class="posttitle">Editar Categoría:</h3>
+                    </div>
+
+                    <!-- Begin Post Content -->
+                    <div class="article-post">
+                        <div class="form-group">
+                            <label>Nombre: </label> {{ form.nombre }}
+                        </div>
+                        <div class="form-group">
+                            <label>Descripción:</label> {{ form.descripcion }}
+                        </div>
+                    </div>
+                        <!-- End Post Content -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success text-white">Editar</button>
+                            <a class="btn btn-info text-black" href="{% url 'details_categoria' categoria.id %}">Regresar</a>
+                        </div>
+                        <!-- End Tags -->
+                </form>
+            </div>
+            <!-- End Post -->
+        </div>
+    </div>
+{% endblock %}

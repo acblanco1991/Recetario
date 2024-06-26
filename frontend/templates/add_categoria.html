@@ -1,0 +1,37 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-12">
+                <form action="{% url 'add_categoria' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <div class="mainheading">
+                        <h3 class="posttitle">Agregar Categoría</h3>
+
+                    </div>
+                    <!-- Begin Post Content -->
+                    <div class="article-post">
+                        <div class="form-group">
+                            <label>Nombre: </label> {{ form.nombre }}
+                        </div>
+                        <div class="form-group">
+                            <label>Descripción:</label> {{ form.descripcion }}
+                        </div>
+
+                        <!-- End Post Content -->
+
+                        <!-- Begin Tags -->
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success text-white">Guardar</button>
+                            <a class="btn btn-info text-black" href="{% url 'index' %}">Regresar</a>
+                        </div>
+
+                        <!-- End Tags -->
+                </form>
+            </div>
+            <!-- End Post -->
+        </div>
+    </div>
+{% endblock %}

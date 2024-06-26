@@ -1,0 +1,62 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-12">
+                <form action="/details/" method="post">{% csrf_token %}
+                    <div class="mainheading">
+                        <h1 class="posttitle">{{receta.titulo}}</h1>
+                    </div>
+
+                    <!-- Begin Post Content -->
+                    <div class="article-post">
+                        <div class="form-group">
+                            <img src="{{ receta.imagen.url }}" style="width: 50%; display: block; margin: 0 auto;">
+                        </div>
+                        <div class="form-group">
+                             <label><strong>Fecha Subida:</strong></label> {{ receta.created | date:"j F Y, P" }}
+                         </div>
+                        <div class="form-group">
+                             <label><strong>Autor:</strong></label> {{ receta.autor.username }}
+                         </div>
+                        <div class="form-group">
+                             <label><strong>Categoría:</strong></label> {{ receta.categoria }}
+                         </div>
+                        <div class="form-group">
+                            <label><strong>Subtítulo: </strong></label> {{ receta.subtitulo }}
+                        </div>
+                         <div class="form-group">
+                            <label><strong>Ingredientes:</strong></label> {{ receta.ingredientes }}
+                         <div class="form-group">
+                             <label><strong>Pasos:</strong></label> {{ receta.pasos }}
+                         </div>
+                         <div class="form-group">
+                             <label><strong>Tiempo de Cocción:</strong></label> {{ receta.tiempo_coccion }}
+                         </div>
+{#                         <div class="form-group">#}
+{#                             <label>Imagen:</label> {{ receta.imagen.url }}#}
+{#                         </div>#}
+                    </div>
+                    <!-- End Post Content -->
+
+                    <!-- Begin Tags -->
+                        <div class="after-post-tags">
+                        {% if es_autor %}
+                            <a class="btn btn-primary text-black" href="{% url 'edit' receta.id %}">Editar</a>
+                            <a class="btn btn-danger text-black" href="{% url 'delete' receta.id %}">Eliminar</a>
+                            <a class="btn btn-info text-black" href="{% url 'index' %}">Regresar</a>
+                        {% else %}
+                            <button class="btn btn-primary text-black" disabled>Editar</button>
+                            <button class="btn btn-danger text-black" disabled>Eliminar</button>
+                            <a class="btn btn-info text-black" href="{% url 'index' %}">Regresar</a>
+                        {% endif %}
+                        </div>
+                    <!-- End Tags -->
+                </form>
+            </div>
+            <!-- End Post -->
+        </div>
+    </div>
+{% endblock %}

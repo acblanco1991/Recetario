@@ -1,0 +1,11 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+
+            <p>cate</p>
+                {% for cate in categoria %}
+                    <p>{{ cate.nombre }}</p>
+                {% endfor %}
+
+{% endblock %}

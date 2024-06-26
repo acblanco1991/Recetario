@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+{#    <link rel="icon" href="{% static 'img/favicon.ico' %}">#}
+    {#    <link href="{% static 'img/favicon.ico' %}">#}
+    <title>Recetario - Para que aprendas a cocinar un superplato</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="{% static 'fonts/css/fontawesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'fonts/Righteous-Regular.ttf' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/mediumish.css' %}" rel="stylesheet">
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+</head>
+<body>
+{#{% include 'partials/nav.html' %}#}
+
+{#{% if user.is_authenticated %}#}
+{#    <p>Hi {{ user.username }}! <a href="{% url 'logout' %}">Logout</a></p>#}
+{#{% else %}#}
+{#    <p>You are not logged in. <a href="{% url 'login' %}">Login</a></p>#}
+{#    <p>You are not registered. <a href="{% url 'register' %}">Registered</a></p>#}
+{#{% endif %}#}
+
+{% block content %}
+{% endblock %}
+
+{% include 'partials/nav.html' %}
+{% include 'partials/footer.html' %}
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"#}
+{#        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"#}
+{#        crossorigin="anonymous"></script>#}
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+
+
+{#{% if user.is_authenticated %}#}
+{#    <p>Hi {{ user.username }}! <a href="{% url 'logout' %}">Logout</a></p>#}
+{#{% else %}#}
+{#    <p>You are not logged in. <a href="{% url 'login' %}">Login</a></p>#}
+{#    <p>You are not registered. <a href="{% url 'register' %}">Registered</a></p>#}
+{#{% endif %}#}
+</body>
+</html>

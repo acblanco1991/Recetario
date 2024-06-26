@@ -1,0 +1,43 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-12">
+                <form action="/details_categoria/" method="post">{% csrf_token %}
+                    <div class="mainheading">
+                        <h3 class="posttitle">Categoría: {{categoria.nombre}}</h3>
+                    </div>
+
+                    <!-- Begin Post Content -->
+                    <div class="article-post">
+{#                        <div class="form-group">#}
+{#                            {{receta.imagen.url}}#}
+{#                        </div>#}
+                        <div class="form-group">
+                            <label>Nombre: </label> {{ categoria.nombre }}
+                        </div>
+                         <div class="form-group">
+                            <label>Descripción:</label> {{ categoria.descripcion }}
+                         </div>
+
+                    </div>
+                    <!-- End Post Content -->
+
+                    <!-- Begin Tags -->
+                    <div class="after-post-tags">
+
+                            <a class="btn btn-primary text-black" href="{% url 'edit_categoria' categoria.id  %}">Editar</a>
+                            <a class="btn btn-danger text-black" href="{% url 'delete_categoria' categoria.id  %}">Eliminar</a>
+                            <a class="btn btn-info text-black" href="{% url 'index' %}">Regresar</a>
+
+
+                    </div>
+                    <!-- End Tags -->
+                </form>
+            </div>
+            <!-- End Post -->
+        </div>
+    </div>
+{% endblock %}

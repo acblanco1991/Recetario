@@ -1,0 +1,58 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-12">
+                <form action="{% url 'edit' receta.id %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+                    <div class="mainheading">
+                        <h3 class="posttitle">Título:</h3> {{ form.titulo }}
+                    </div>
+                    <!-- Begin Post Content -->
+                    <div class="article-post">
+                        <div class="form-group">
+                            <label>Subtítulo: </label> {{ form.subtitulo }}
+                        </div>
+                        <div class="form-group">
+                            <label>Ingredientes:</label> {{ form.ingredientes }}
+                            <div class="form-group">
+                                <label>Pasos:</label> {{ form.pasos|safe }}
+                            </div>
+                            <div class="form-group">
+                                <label>Tiempo de Cocción:</label> {{ form.tiempo_coccion }}
+                            </div>
+                            <div class="form-group">
+                                <label>Categoría:</label> {{ form.categoria }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.autor }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.imagen }}
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            {% if messages %}
+                                <div class="alert alert-danger" role="alert">
+                                    {% for message in messages %}
+                                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <!-- Contenido de la página -->
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success text-white">Actualizar</button>
+                            <a class="btn btn-info text-black" href="{% url 'details' receta.id %}">Regresar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End Post -->
+        </div>
+    </div>
+
+{% endblock %}

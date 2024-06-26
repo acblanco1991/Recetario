@@ -1,0 +1,21 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <p>¿Estás seguro que desea eliminar la receta" {{ receta.titulo }}"?</p>
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Confirmar" class="btn btn-danger text-white">
+                    <a href="{% url 'details' receta.id %}" class="btn btn-info text-black">Atrás</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

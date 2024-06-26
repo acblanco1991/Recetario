@@ -1,0 +1,104 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Begin Site Title
+================================================== -->
+
+
+<div class="container">
+	<div class="mainheading">
+		<h1 class="sitetitle">Recetario</h1>
+		<p class="lead">
+			Para que innoves en tu cocina...todo tipo de recetas
+		</p>
+	</div>
+<!-- End Site Title
+================================================== -->
+<section class="featured-posts">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="section-title">
+                    <h2><span>Listado de Recetas</span></h2>
+                </div>
+                <div class="card-columns listfeaturedtag">
+                    <!-- begin post -->
+                    {% for receta in recetas %}
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-md-6 wrapthumbnail">
+                                    <div class="thumbnail" style="background-image: url({{ receta.imagen.url }}); background-size: cover;"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-block">
+                                    <h2 class="card-title"><a href="{% url 'details' receta.id %}">{{ receta.titulo }}</a></h2>
+                                    <h4 class="card-text">{{ receta.subtitulo }}.</h4>
+                                    <div class="metafooter">
+                                        <div class="wrapfooter">
+                                            <span class="author-meta">
+                                                <span class="post-name">Autor: {{receta.autor.username}}</span><br/>
+                                                <span class="post-date">{{ receta.created | date:"j F Y, P" }}</span>
+                                            </span>
+                                                <a href="{% url 'details' receta.id %}" title="Leer Más" style="margin-right: 20px"><h6>Leer Más</h6></a>                                                                      </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- end post -->
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="section-title">
+                    <h2><span>Categorías</span></h2>
+                </div>
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-2 wrapthumbnail">
+                           <ul>
+                            {% for categoria in categorias %}
+                                <div class="card-title">
+                                    <li><a href="{% url 'details_categoria'  categoria.id%}">{{categoria.nombre}}</a></li>
+                                </div>
+                            {% endfor %}
+                           </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if recetas.has_previous %}
+                        <li class="page-item link">
+                            <a class="page-link link" href="?page=1">&laquo; Ini.</a>
+                        </li>
+                        <li class="page-item link">
+                            <a class="page-link link" href="?page={{ recetas.previous_page_number }}">Ant.</a>
+                        </li>
+                    {% endif %}
+
+                    <li class="page-item disabled">
+                        <a class="page-link link">{{ recetas.number }} de {{ recetas.paginator.num_pages }}</a>
+                    </li>
+
+                    {% if recetas.has_next %}
+                        <li class="page-item">
+                            <a class="page-link link" href="?page={{ recetas.next_page_number }}">Sig.</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ recetas.paginator.num_pages }}">Últ. &raquo;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+    </div>
+</section>
+
+</div>
+{% endblock %}

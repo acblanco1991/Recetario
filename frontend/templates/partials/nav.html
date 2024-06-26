@@ -1,0 +1,123 @@
+{% load static %}
+
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation" style="background-color: #65d0a7">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<style>
+        .nav-item .submenu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .nav-item:hover .submenu {
+            display: block;
+        }
+
+        .submenu li {
+            padding: 8px 16px;
+        }
+
+        .submenu li:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+<div class="container">
+	<!-- Begin Logo -->
+	<a class="navbar-brand" href="{% url 'index' %}">
+{#	<img src="/static/img/logo.png" alt="logo">#}
+	</a>
+	<!-- End Logo -->
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<!-- Begin Menu -->
+
+        <ul class="navbar-nav ml-auto">
+{#            <form class="form-inline my-2 my-lg-0">#}
+{#			    <input class="form-control mr-sm-2" type="text" placeholder="Search">#}
+{#			    <span class="search-icon"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25"><path d="M20.067 18.933l-4.157-4.157a6 6 0 1 0-.884.884l4.157 4.157a.624.624 0 1 0 .884-.884zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z"></path></svg></span>#}
+{#		    </form>#}
+
+            {% if request.user.is_authenticated %}
+                <li class="nav-item active">
+			        <a class="nav-link" id="botonlogin" href="{% url 'index' %}">Inicio <span class="sr-only">(current)</span></a>
+			    </li>
+                <li class="nav-item active">
+                    <a class="nav-link" id="botonlogin" href="">Receta <span class="sr-only">(current)</span></a>
+                    <ul class="submenu">
+                        <li class="nav-item">
+                            <a class="nav-item hidden" id="botonreceta" href="{% url 'index' %}">Ver Recetas <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item hidden" id="botonreceta" href="{% url 'add_receta' %}">Agregar Receta <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item hidden" id="botoncategoria" href="{% url 'add_categoria' %}">Agregar Categoría
+                                <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item hidden" id="botonbuscar" href="{% url 'buscar_receta' %}">Buscar Receta <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item hidden" id="botonfiltrar" href="{% url 'filtrar_categoria' %}">Buscar Receta x
+                                Cat. <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" id="botonlogin" href="">Perfil <span class="sr-only">(current)</span></a>
+                    <ul class="submenu">
+                        <li class="nav-item">
+                            <a class="nav-item hidden" id="botonperfil" href="{% url 'details_perfil' user.pk %}">Ver Perfil <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item hidden" id="botoneditperfil" href="{% url 'edit_perfil' user.pk %}">Editar Perfil <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item hidden" id="botondelperfil" href="{% url 'delete_perfil' user.pk %}">Eliminar Perfil <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item hidden" id="botonlogout" href="{% url 'logout' %}">Cerrar Sesión <span class="sr-only">(current)</span></a>
+                        </li>
+
+
+{##}
+{#                <li class="nav-item active">#}
+{#			        <a class="nav-link" id="botonlogout" href="{% url 'logout' %}">Cerrar Sesión <span class="sr-only">(current)</span></a>#}
+{#			    </li>#}
+            {% else %}
+                <li class="nav-item active">
+			        <a class="nav-link" id="botonlogin" href="{% url 'login' %}">Iniciar Sesión <span class="sr-only">(current)</span></a>
+			    </li>
+                <li class="nav-item active">
+			        <a class="nav-link" id="botoncrear" href="{% url 'register' %}">Crear Cuenta <span class="sr-only">(current)</span></a>
+			    </li>
+            {% endif %}
+
+
+{#			<li class="nav-item">#}
+{#			<a class="nav-link" href="post.html">Post</a>#}
+{#			</li>#}
+{#			<li class="nav-item">#}
+{#			<a class="nav-link" href="author.html">Author</a>#}
+{#			</li>#}
+		</ul>
+		<!-- End Menu -->
+		<!-- Begin Search -->
+
+		<!-- End Search -->
+	</div>
+</div>
+</nav>
+<!-- End Nav
