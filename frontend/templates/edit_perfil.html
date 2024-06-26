@@ -1,0 +1,44 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-12">
+                <form action="{% url 'edit_perfil' user.pk %}" method="post">{% csrf_token %}
+                    <!-- Begin Post Content -->
+                    <div class="article-post">
+                        <h4>Editar Perfil</h4>
+                        <div class="form-group">
+                            <label><strong>Nombre: </strong></label>
+                            {{ form.username }}
+                        </div>
+                        <div class="form-group">
+                            <label><strong>Apellido: </strong></label>
+                            {{ form.first_name }}
+                        </div>
+                    </div>
+
+{#                        <div class="container">#}
+{#                            {% if messages %}#}
+{#                                <div class="alert alert-danger" role="alert">#}
+{#                                    {% for message in messages %}#}
+{#                                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>#}
+{#                                    {% endfor %}#}
+{#                                </div>#}
+{#                            {% endif %}#}
+{#                            <!-- Contenido de la página -->#}
+{#                        </div>#}
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success text-white">Actualizar</button>
+                            <a class="btn btn-info text-black" href="{% url 'index' %}">Regresar</a>
+                        </div>
+
+                </form>
+            </div>
+            <!-- End Post -->
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="article-post">
+                <div class="form-group">
+                    <label><strong>Nombre:</strong></label> {{ user.username }}
+                </div>
+                <div class="form-group">
+                    <label><strong>Apellido:</strong></label> {{ user.first_name }}
+                </div>
+                <div class="form-group">
+                    <a href="{% url 'index' %}" class="btn btn-info text-black">Atrás</a>
+{#                    <a href="{% url 'edit_perfil' user.pk %}" class="btn btn-primary">Editar Perfil</a>#}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
