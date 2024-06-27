@@ -13,7 +13,7 @@
                     <!-- Begin Post Content -->
                     <div class="article-post">
                         <div class="form-group" style="padding-left: 18px">
-                            <label>Título: </label>
+                            <label>Categorías: </label>
                                 {% for cat in categorias %}
                                     <li style="list-style: none">
                                         <input type="radio" name="datos" value="{{ cat.nombre }}" {% if cat.nombre == categoria_seleccionada %}checked{% endif %}> {{ cat.nombre }}
