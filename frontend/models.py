@@ -28,6 +28,7 @@ class Receta(models.Model):
     imagen = models.ImageField(null=True, blank=True, upload_to='img/')
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True)
     autor = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    # is_favorite = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
