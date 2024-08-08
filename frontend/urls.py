@@ -28,7 +28,7 @@ urlpatterns = [
     path('edit_perfil/<int:pk>', views.edit_perfil.as_view(), name='edit_perfil'),
     path('delete_perfil/<int:pk>', views.delete_perfil.as_view(), name='delete_perfil'),
 
-
+    # path('is_favorite/<int:pk>', views.is_favorite.as_view(), name='is_favorite'),
 
 ]
 # urlpatterns += staticfiles_urlpatterns()
